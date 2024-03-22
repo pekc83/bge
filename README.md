@@ -4,6 +4,9 @@ This Rust library provides an interface for generating embeddings using the BGE 
 Face, specifically designed for dense retrieval applications. The model, part of the FlagEmbedding project, focuses on
 retrieval-augmented LLMs and offers state-of-the-art performance for embedding generation.
 
+Rust docs: https://docs.rs/bge/latest/bge/struct.Bge.html
+Crates.io: https://crates.io/crates/bge
+
 ## Features
 
 - Load and use the BGE Small English v1.5 model for embedding generation.
