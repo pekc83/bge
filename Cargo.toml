@@ -1,0 +1,18 @@
+[package]
+name = "bge"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+license-file = "LICENSE.txt"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ort = { version = "2.0.0-rc.0", default-features = false, features = ["ndarray"] }
+tokenizers = { version = "0.15.2", features = ["http"] }
+anyhow = "1.0.81"
+ndarray = "0.15.6"
+thiserror = "1.0.58"
+
+[dev-dependencies]
+ort = { version = "2.0.0-rc.0", default-features = false, features = ["download-binaries"] }
