@@ -60,7 +60,7 @@ impl Bge {
     {
         let tokenizer = Tokenizer::from_file(tokenizer_file_path.as_ref().to_str().unwrap())
             .map_err(|e| anyhow!(e))?;
-        let model = ort::Session::builder()?.with_model_from_file(model_file_path)?;
+        let model = ort::Session::builder()?.commit_from_file(model_file_path)?;
         Ok(Self { tokenizer, model })
     }
 
@@ -123,7 +123,7 @@ impl Bge {
         let outputs = self.model.run(inputs).map_err(BgeError::OnnxRuntimeError)?;
 
         let output = outputs["last_hidden_state"]
-            .extract_tensor::<f32>()
+            .try_extract_tensor()
             .map_err(BgeError::OnnxRuntimeError)?;
         let view = output.view();
 
@@ -149,13 +149,13 @@ fn normalize(vec: &mut [f32]) {
 mod tests {
     use super::*;
 
+    mod test_data;
+
     #[test]
     fn it_works() {
-        let bge = Bge::from_files("../assets/tokenizer.json", "../assets/model.onnx").unwrap();
+        let bge = Bge::from_files("assets/tokenizer.json", "assets/model.onnx").unwrap();
         let res = bge.create_embeddings("Some input text to generate embeddings for.");
 
-        assert_eq!(res.as_ref().unwrap().len(), 384);
-
-        dbg!(res.unwrap());
+        assert_eq!(res.unwrap(), test_data::TEST_EMBEDDING_RESULT);
     }
 }

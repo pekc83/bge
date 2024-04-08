@@ -1,7 +1,7 @@
 [package]
 name = "bge"
 description = "Rust interface for BGE Small English Embedding Library"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 license-file = "LICENSE"
 repository = "https://github.com/pekc83/bge"
@@ -12,7 +12,7 @@ keywords = ["sentence-similarity", "text-embedding", "bert", "transformers"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-ort = { version = "2.0.0-rc.0", default-features = false, features = ["ndarray"] }
+ort = { version = "2.0.0-rc.1", default-features = false, features = ["ndarray"] }
 tokenizers = { version = "0.15.2", features = ["http"] }
 anyhow = "1.0.81"
 ndarray = "0.15.6"
