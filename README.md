@@ -40,7 +40,7 @@ To use `bge` in your project, add the following to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-bge = "0.1.0"
+bge = "0.2.0"
 
 # If your project requires `ort` binaries to be automatically downloaded, include `ort` with the `download-binaries` feature enabled:
 ort = { version = "2.0.0-rc.1", default-features = false, features = ["download-binaries"] }
